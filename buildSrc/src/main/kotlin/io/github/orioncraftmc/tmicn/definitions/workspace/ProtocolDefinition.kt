@@ -19,10 +19,11 @@ data class ProtocolDefinition(
         appendLine()
         appendLine("## Packet Types")
 
-        val types = packets.flatMap { it.fields }.map { it.type }.distinct().sortedBy { it.fromDefinition }
+        val types = packets.flatMap { it.fields }.map { it.type }.distinct().sortedBy { it }
         for ((index, type) in types.withIndex()) {
-            appendLine("### ${index + 1}. Type `${type.fromDefinition}`")
-            appendLine(type.documentation)
+            val typeDef = protocol.types.firstOrNull { it.name == type }
+            appendLine("### ${index + 1}. Type `${type}`")
+            appendLine(typeDef?.documentation ?: "No documentation available.")
             appendLine()
         }
 
@@ -37,7 +38,7 @@ data class ProtocolDefinition(
             appendLine("| Name | Type | Description |")
             appendLine("| ---- | ---- | ----------- |")
             for (field in packet.fields) {
-                appendLine("| `${field.name}` | `${field.type.fromDefinition}` | ${field.documentation.trim()} |")
+                appendLine("| `${field.name}` | `${field.type}` | ${field.documentation.trim()} |")
             }
 
         }

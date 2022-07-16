@@ -6,5 +6,5 @@ This packet is used by the server to notify the client of the current anti-hack 
 
 [[fields]]
 name = "version_hash"
-type = "utf_bytes"
+type = "str_bytes"
 documentation = "The version hash of the current anti-hack build."
