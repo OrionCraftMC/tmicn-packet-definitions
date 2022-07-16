@@ -1,9 +1,7 @@
 package io.github.orioncraftmc.tmicn.definitions.workspace
 
-import com.fasterxml.jackson.databind.DeserializationFeature
-import com.fasterxml.jackson.dataformat.toml.TomlMapper
-import com.fasterxml.jackson.module.kotlin.kotlinModule
 import io.github.orioncraftmc.tmicn.definitions.helpers.WorkspaceConstants
+import io.github.orioncraftmc.tmicn.definitions.helpers.WorkspaceConstants.mapper
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.TmicnProtocol
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.TmicnPacket
 import org.gradle.api.Project
@@ -17,20 +15,16 @@ data class ProtocolDefinitionSpec(
     val name: String,
     val rootDir: Path
 ) {
-    private val mapper = TomlMapper().apply {
-        configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-        registerModule(kotlinModule())
-    }
-
     private val definitionPath: Path = rootDir.resolve(WorkspaceConstants.PROTOCOL_DEFINITION_FILE)
     private val dataDir: Path = rootDir.resolve(WorkspaceConstants.PROTOCOL_DATA_DIR)
 
-    fun load(): ProtocolDefinition {
+    fun load(tmicnSpec: TmicnSpec): ProtocolDefinition {
         if (Files.notExists(definitionPath)) {
             throw IllegalStateException("Protocol definition file does not exist: $definitionPath")
         }
 
         val protocol = mapper.readValue(definitionPath.readText(), TmicnProtocol::class.java)
+        protocol.types.addAll(tmicnSpec.types)
 
         val packets = mutableListOf<TmicnPacket>()
         Files.walk(dataDir).forEach {
