@@ -15,29 +15,3 @@ name = "utf"
 documentation = """
 This is a UTF string that is read with `DataInputStream#readUTF()`
 """
-
-[[types]]
-name = "str_bytes"
-documentation = """
-This is a String that is read from a byte array.
-
-Pseudocode in Java:
-```java
-public String readStrBytes(InputStream input) {
-    String result = "";
-    // First check if we have a string
-    boolean hasValue = input.read() == 1;
-    if (hasValue) {
-        // We do, so read the number of bytes that make up the string
-        int length = input.read();
-        byte[] bytes = new byte[length];
-        // Read the bytes from the stream into the array
-        input.read(bytes);
-        // Finally, convert the bytes to a string
-        result = new String(bytes);
-    }
-
-    return result;
-}
-```
-"""
