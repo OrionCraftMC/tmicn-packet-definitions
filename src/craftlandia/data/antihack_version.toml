@@ -1,0 +1,10 @@
+name = "antihack_version"
+type = "server-to-client"
+documentation = """
+This packet is used by the server to notify the client of the current anti-hack version build.
+"""
+
+[[fields]]
+name = "version_hash"
+type = "utf_bytes"
+documentation = "The version hash of the current anti-hack build."

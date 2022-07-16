@@ -1,0 +1,41 @@
+name = "skin_data"
+type = "server-to-client"
+
+documentation = """
+This packet is used by the server to send custom skin and cape data to the client.
+"""
+
+[[fields]]
+name = "name"
+type = "utf"
+documentation = """
+This is the name of the player to which this skin and cape data belongs to.
+"""
+
+[[fields]]
+name = "cloak_url"
+type = "utf"
+documentation = """
+This is the URL of the cloak texture.   
+"""
+
+[[fields]]
+name = "skin_url"
+type = "utf"
+documentation = """
+This is the URL of the skin texture.
+"""
+
+[[fields]]
+name = "upside_down"
+type = "boolean"
+documentation = """
+This is a flag indicating whether the player is rendered upside down (similar to jeb_).
+"""
+
+[[fields]]
+name = "scale"
+type = "float"
+documentation = """
+This is the scale used to render the player.
+"""

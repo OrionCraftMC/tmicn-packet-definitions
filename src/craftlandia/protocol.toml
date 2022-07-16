@@ -1,0 +1,5 @@
+name = "CraftLandia AntiHack"
+
+documentation = """
+This is the protocol used by the CraftLandia AntiHack client to communicate with the server's anticheat system.
+"""
