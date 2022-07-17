@@ -1,5 +1,8 @@
 name = "antihack_version"
 type = "server-to-client"
+
+plugin-message-channel = 'CL|AHVersion'
+
 documentation = """
 This packet is used by the server to notify the client of the current anti-hack version build.
 """

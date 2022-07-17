@@ -7,7 +7,9 @@ import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.fi
 
 data class TmicnPacket(
     override val name: String,
-    override val documentation: String
+    override val documentation: String,
+    @JsonProperty("plugin-message-channel")
+    val pluginMessageChannel: String?,
 ) : Documentable {
 
     val fields: MutableList<TmicnPacketField> = mutableListOf()

@@ -1,5 +1,6 @@
 name = "skin_data"
 type = "server-to-client"
+plugin-message-channel = "CL|Skins"
 
 documentation = """
 This packet is used by the server to send custom skin and cape data to the client.

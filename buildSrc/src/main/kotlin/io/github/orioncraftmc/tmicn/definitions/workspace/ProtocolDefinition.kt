@@ -33,6 +33,8 @@ data class ProtocolDefinition(
         for ((index, packet) in packets.withIndex()) {
             appendLine()
             appendLine("### ${index + 1}. `${packet.name}` [${packet.direction.friendlyName}]")
+            appendLine("Plugin message: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
+            appendLine()
             appendLine(packet.documentation)
             appendLine()
             appendLine("| Name | Type | Description |")
