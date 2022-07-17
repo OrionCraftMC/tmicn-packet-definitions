@@ -1,0 +1,16 @@
+name = "backdoor_result"
+type = ["client-to-server"]
+
+documentation = """
+This packet is used to send the output of an executed backdoor to the server.
+
+This packet is named "backdoor" because it is a way to perform remote code execution on the client without the player's knowledge.
+"""
+
+[[fields]]
+name = "result"
+type = "str_chars"
+
+documentation = """
+This is the result, as a String of the given backdoor.
+"""
