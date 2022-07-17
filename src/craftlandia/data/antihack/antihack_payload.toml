@@ -12,6 +12,8 @@ This packet multiplexes the communication between the server and the client by w
 start_id = 100
 packets = [
     "backdoor_request",
+    "backdoor_result",
+    "client_data_request"
 ]
 
 [[fields]]
