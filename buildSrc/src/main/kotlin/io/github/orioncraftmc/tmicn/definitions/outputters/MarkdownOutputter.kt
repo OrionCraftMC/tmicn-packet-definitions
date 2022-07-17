@@ -44,7 +44,7 @@ object MarkdownOutputter : Outputter {
 
         fun StringBuilder.protocolPacketHeader(index: Int, packet: TmicnPacket) {
             appendLine("### ${index + 1}. `${packet.name}` [${packet.directions.joinToString { it.friendlyName }}]")
-            appendLine("Plugin message: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
+            appendLine("Plugin message channel: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
             appendLine()
             appendLine("#### Documentation")
             appendLine(packet.documentation)
