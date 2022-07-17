@@ -9,42 +9,4 @@ data class ProtocolDefinition(
     val packets: List<TmicnPacket>
 ) {
 
-    fun renderToMarkdown() = buildString {
-
-        appendLine("# ${protocol.name} (`$name`)")
-        appendLine()
-        appendLine(protocol.documentation)
-
-        appendLine("---")
-        appendLine()
-        appendLine("## Packet Types")
-
-        val types = packets.flatMap { it.fields }.map { it.type }.distinct().sortedBy { it }
-        for ((index, type) in types.withIndex()) {
-            val typeDef = protocol.types.firstOrNull { it.name == type }
-            appendLine("### ${index + 1}. Type `${type}`")
-            appendLine(typeDef?.documentation ?: "No documentation available.")
-            appendLine()
-        }
-
-        appendLine()
-        appendLine("## Packets")
-
-        for ((index, packet) in packets.withIndex()) {
-            appendLine()
-            appendLine("### ${index + 1}. `${packet.name}` [${packet.direction.friendlyName}]")
-            appendLine("Plugin message: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
-            appendLine()
-            appendLine(packet.documentation)
-            appendLine()
-            appendLine("| Name | Type | Description |")
-            appendLine("| ---- | ---- | ----------- |")
-            for (field in packet.fields) {
-                appendLine("| `${field.name}` | `${field.type}` | ${field.documentation.trim()} |")
-            }
-
-        }
-
-    }
-
 }
