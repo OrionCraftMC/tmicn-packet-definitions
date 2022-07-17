@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.Documentable
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.field.TmicnPacketField
+import java.nio.file.Path
 import java.util.*
 
 data class TmicnPacket(
@@ -13,6 +14,9 @@ data class TmicnPacket(
     val pluginMessageChannel: String?,
     val multiplexing: TmicnPacketMultiplexingData? = null
 ) : Documentable {
+
+    @JsonIgnore
+    lateinit var path: Path
 
     val fields: MutableList<TmicnPacketField> = mutableListOf()
 

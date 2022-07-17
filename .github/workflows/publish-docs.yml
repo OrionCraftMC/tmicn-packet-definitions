@@ -32,9 +32,9 @@ jobs:
         uses: crazy-max/ghaction-github-pages@v3.0.0
         with:
           target_branch: docs
-          keep_history: true
+          keep_history: false
           build_dir: build/markdown
-          commit_message: 'Update documentation'
+          commit_message: 'Update TMICN packet documentation'
           allow_empty_commit: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

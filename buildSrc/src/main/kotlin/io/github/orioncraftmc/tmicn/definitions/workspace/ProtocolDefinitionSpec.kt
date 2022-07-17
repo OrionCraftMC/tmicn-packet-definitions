@@ -29,7 +29,7 @@ data class ProtocolDefinitionSpec(
         val packets = mutableListOf<TmicnPacket>()
         Files.walk(dataDir).forEach {
             if (it.extension == "toml") {
-                val packet = mapper.readValue(it.readText(), TmicnPacket::class.java)
+                val packet = mapper.readValue(it.readText(), TmicnPacket::class.java).apply { path = dataDir.relativize(it) }
                 packets.add(packet)
                 project.logger.quiet(":tmicn - Loaded packet: ${packet.name}")
             }

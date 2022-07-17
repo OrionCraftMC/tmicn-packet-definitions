@@ -19,5 +19,11 @@ object WorkspaceConstants {
 
     const val DOCS_OUTPUT_DIR = "markdown"
 
+    const val PROTOCOL_PACKETS_DIR = "packets"
+
+    const val PROTOCOL_MARKDOWN_FILE = "protocol.md"
+    const val TYPES_MARKDOWN_FILE = "types.md"
+    const val PROTOCOL_PACKETS_FILE = "packets.md"
+
 
 }
