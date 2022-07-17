@@ -6,13 +6,74 @@ This is the protocol used by the CraftLandia AntiHack client to communicate with
 
 
 [[types]]
+name = "str_chars"
+documentation = """
+This is a string that is written in the format of a list of characters,
+being prefixed with the length of the string serialized as a short.
+
+<details>
+<summary>I/O Pseudocode</summary>
+
+Reading in Java:
+```java
+public String readStrChars(DataOutputStream data) {
+    int length = s.readShort();
+    if (length > Short.MAX_VALUE) {
+        throw new IOException("Received string length longer than maximum allowed (" + length + " > " + max + ")");
+    }
+    if (length < 0) {
+        throw new IOException("Received string length is less than zero! Weird string!");
+    }
+    StringBuilder sb = new StringBuilder();
+    for (int i = 0; i < length; ++i) {
+        sb.append(data.readChar());
+    }
+    return sb.toString();
+}
+```
+
+Writing in Java:
+```java
+public static void writeStrChars(String str, DataOutputStream out) throws IOException {
+    if (str.length() > Short.MAX_VALUE) {
+        throw new IOException("String too big");
+    }
+    out.writeShort(str.length());
+    out.writeChars(str);
+}
+```
+
+</details>
+"""
+
+[[types]]
+name = "str_chars_array_int_size"
+documentation = """
+This is an array of strings of type str_chars but written to the wire in the following format:
+- The length of the array is written as an int `DataOutputStream#writeInt`
+- Each string is written as a str_chars
+"""
+
+[[types]]
+name = "byte_array_byte_size"
+documentation = """
+This is an array of bytes written to the wire in the following format:
+- The length of the array is written as a byte `OutputStream#write`
+- Each byte is written as a byte `OutputStream#write`
+"""
+
+[[types]]
 name = "str_bytes"
 documentation = """
 This is a String that is read from a byte array.
 
-Pseudocode in Java:
+
+<details>
+<summary>I/O Pseudocode</summary>
+
+Reading in Java:
 ```java
-public String readStrBytes(InputStream input) {
+public static String readStrBytes(InputStream input) {
     String result = "";
     // First check if we have a string
     boolean hasValue = input.read() == 1;
@@ -29,4 +90,17 @@ public String readStrBytes(InputStream input) {
     return result;
 }
 ```
+
+Writing in Java:
+```java
+public static void writeStrBytes(String str, OutputStream output) throws IOException {
+    output.write(str != null ? 1 : 0);
+    if (str != null) {
+        output.write(str.length());
+        output.write(str.getBytes());
+    }
+}
+```
+
+</details>
 """

@@ -43,20 +43,39 @@ object MarkdownOutputter : Outputter {
     private fun StringBuilder.protocolPackets(definition: ProtocolDefinition) = apply {
 
         fun StringBuilder.protocolPacketHeader(index: Int, packet: TmicnPacket) {
-            appendLine("### ${index + 1}. `${packet.name}` [${packet.direction.friendlyName}]")
+            appendLine("### ${index + 1}. `${packet.name}` [${packet.directions.joinToString { it.friendlyName }}]")
             appendLine("Plugin message: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
             appendLine()
             appendLine(packet.documentation)
         }
 
-        fun StringBuilder.protocolPacket(index: Int, packet: TmicnPacket) {
-            protocolPacketHeader(index, packet)
-            appendLine()
+        fun StringBuilder.protocolPacketFields(packet: TmicnPacket) {
             appendLine("| Name | Type | Description |")
             appendLine("| ---- | ---- | ----------- |")
             for (field in packet.fields) {
                 appendLine("| `${field.name}` | `${field.type}` | ${field.documentation.trim()} |")
             }
+        }
+
+        fun StringBuilder.protocolPacketMultiplexing(packet: TmicnPacket) {
+            if (packet.multiplexing != null) {
+                appendLine()
+                appendLine("This packet performs multiplexing. Meaning it is used to wrap multiple different packets under the same one.")
+                appendLine()
+                appendLine("|  Id  | Name |")
+                appendLine("| ---- | ---- |")
+                val startId = packet.multiplexing.startId
+                for ((index, id) in (startId until startId + packet.fields.size - 1).withIndex()) {
+                    appendLine("| `$id` | `${packet.multiplexing.packets[index]}` |")
+                }
+            }
+        }
+
+        fun StringBuilder.protocolPacket(index: Int, packet: TmicnPacket) {
+            protocolPacketHeader(index, packet)
+            appendLine()
+            protocolPacketFields(packet)
+            protocolPacketMultiplexing(packet)
         }
 
 
@@ -85,7 +104,6 @@ object MarkdownOutputter : Outputter {
         }
         outputFile.writeText(result)
     }
-
 
 
 }

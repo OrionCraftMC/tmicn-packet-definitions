@@ -1,5 +1,5 @@
 name = "antihack_version"
-type = "server-to-client"
+type = ["server-to-client"]
 
 plugin-message-channel = 'CL|AHVersion'
 

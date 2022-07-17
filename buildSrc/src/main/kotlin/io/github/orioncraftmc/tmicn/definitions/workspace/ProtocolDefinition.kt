@@ -7,6 +7,4 @@ data class ProtocolDefinition(
     val name: String,
     val protocol: TmicnProtocol,
     val packets: List<TmicnPacket>
-) {
-
-}
+)

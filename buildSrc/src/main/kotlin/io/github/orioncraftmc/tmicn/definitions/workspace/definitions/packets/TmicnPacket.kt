@@ -4,25 +4,27 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.annotation.JsonProperty
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.Documentable
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.field.TmicnPacketField
+import java.util.*
 
 data class TmicnPacket(
     override val name: String,
     override val documentation: String,
     @JsonProperty("plugin-message-channel")
     val pluginMessageChannel: String?,
+    val multiplexing: TmicnPacketMultiplexingData? = null
 ) : Documentable {
 
     val fields: MutableList<TmicnPacketField> = mutableListOf()
 
     @JsonIgnore
-    var direction: PacketDirectionType = PacketDirectionType.Unknown
+    var directions: EnumSet<PacketDirectionType> = EnumSet.of(PacketDirectionType.Unknown)
 
     @get:JsonProperty("type")
     @set:JsonProperty("type")
-    internal var directionStr: String
-        get() = direction.fromDefinition
+    internal var directionStr: Array<String>
+        get() = directions.map { it.fromDefinition }.toTypedArray()
         set(value) {
-            direction = PacketDirectionType.fromDefinition(value)
+            directions = EnumSet.copyOf(value.map { PacketDirectionType.fromDefinition(it) })
         }
 
 }

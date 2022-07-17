@@ -1,17 +1,23 @@
+[[type]]
+name = "byte"
+documentation = """
+This is a byte value that is read with `InputStream#read` and written with `InputStream#write`.
+"""
+
 [[types]]
 name = "boolean"
 documentation = """
-This is a boolean value that is read with `DataInputStream#readBoolean()`
+This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
 """
 
 [[types]]
 name = "float"
 documentation = """
-This is a float value that is read with `DataInputStream#readFloat()`
+This is a float value that is read with `DataInputStream#readFloat()` and written with `DataInputStream#writeFloat()`.
 """
 
 [[types]]
 name = "utf"
 documentation = """
-This is a UTF string that is read with `DataInputStream#readUTF()`
+This is a UTF string that is read with `DataInputStream#readUTF()` and written with `DataInputStream#writeUTF()`.
 """

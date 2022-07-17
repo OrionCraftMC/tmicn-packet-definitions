@@ -1,0 +1,25 @@
+name = "antihack_payload"
+type = ["server-to-client", "client-to-server"]
+
+documentation = """
+This is the packet used to communicate with the anticheat system on the server.
+
+This packet multiplexes the communication between the server and the client by wrapping the actual packet in this packet.
+"""
+
+[multiplexing]
+# It technically starts at 99 but it increments to 100 on the first packet.
+start_id = 100
+packets = [
+    "backdoor_request",
+]
+
+[[fields]]
+name = "packet_uuid"
+type = "str_chars"
+documentation = "A randomly generated UUID to represent this packet."
+
+[[fields]]
+name = "multiplex_id"
+type = "byte"
+documentation = "The ID of the packet to be multiplexed."
