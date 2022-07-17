@@ -1,3 +1,9 @@
+[[types]]
+name = "boolean"
+documentation = """
+This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
+"""
+
 [[type]]
 name = "byte"
 documentation = """
@@ -5,9 +11,9 @@ This is a byte value that is read with `InputStream#read` and written with `Inpu
 """
 
 [[types]]
-name = "boolean"
+name = "double"
 documentation = """
-This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
+This is a double value that is read with `DataInputStream#readDouble()` and written with `DataInputStream#writeDouble()`.
 """
 
 [[types]]
