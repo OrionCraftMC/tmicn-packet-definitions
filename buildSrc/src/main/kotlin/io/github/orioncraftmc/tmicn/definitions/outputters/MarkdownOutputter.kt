@@ -68,9 +68,10 @@ object MarkdownOutputter : Outputter {
         fun StringBuilder.protocolPacketMultiplexing(packet: TmicnPacket) {
             if (packet.multiplexing != null) {
                 appendLine()
+                appendLine("## Multiplexing specification")
+                appendLine()
                 appendLine("This packet performs multiplexing. Meaning it is used to wrap multiple different packets under the same one.")
                 appendLine()
-                appendLine("## Multiplexing specification")
                 appendLine("|  Id  | Name |")
                 appendLine("| ---- | ---- |")
                 val startId = packet.multiplexing.startId
