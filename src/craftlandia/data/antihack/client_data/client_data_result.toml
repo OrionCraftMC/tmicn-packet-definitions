@@ -1,0 +1,72 @@
+name = "client_data_result"
+type = ["client-to-server"]
+
+documentation = """
+This packet is used by the client to respond to the server's request of some game constants.
+
+This data is then used by the server to flag certain cheats like Hitboxes.
+"""
+
+[[fields]]
+name = "speed_modifier"
+type = "double"
+
+documentation = """
+The player's speed modifier and is presumably used to detect Speed hacks. It is assumed that if this is different than what is expected, the player is flagged as cheating.
+"""
+
+[[fields]]
+name = "unknown_data_1"
+type = "double"
+
+documentation = """
+It is unknown what this is used for, although it appears to be a constant.
+"""
+
+[[fields]]
+name = "unknown data_2"
+type = "double"
+
+documentation = """
+It is unknown what this is used for, although it appears to be a constant.
+"""
+
+[[fields]]
+name = "unknown data_3"
+type = "double"
+
+documentation = """
+It is unknown what this is used for, although it appears to be a constant.
+"""
+
+[[fields]]
+name = "unknown data_4"
+type = "double"
+
+documentation = """
+It is unknown what this is used for, although it appears to be a constant.
+"""
+
+[[fields]]
+name = "unknown data_5"
+type = "double"
+
+documentation = """
+It is unknown what this is used for, although it appears to be a constant.
+"""
+
+[[fields]]
+name = "entity_hitbox_width"
+type = "float"
+
+documentation = """
+This is the constant of an entity width. It is assumed that if this is different than what is expected, the player is flagged as cheating.
+"""
+
+[[fields]]
+name = "entity_hitbox_height"
+type = "float"
+
+documentation = """
+This is the constant of an entity height. It is assumed that if this is different than what is expected, the player is flagged as cheating.
+"""
