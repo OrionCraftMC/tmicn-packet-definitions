@@ -22,6 +22,9 @@ packets = [
     # Screenshot
     "screenshot_request",
     "screenshot_result",
+
+    # Game Hash
+    "game_hash_request"
 ]
 
 [[fields]]
