@@ -34,6 +34,7 @@ jobs:
           target_branch: docs
           keep_history: true
           build_dir: build/markdown
-          jekyll: false
+          commit_message: 'Update documentation'
+          allow_empty_commit: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
