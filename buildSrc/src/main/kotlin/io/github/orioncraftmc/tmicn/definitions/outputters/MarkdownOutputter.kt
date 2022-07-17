@@ -46,12 +46,14 @@ object MarkdownOutputter : Outputter {
             appendLine("### ${index + 1}. `${packet.name}` [${packet.directions.joinToString { it.friendlyName }}]")
             appendLine("Plugin message: ${packet.pluginMessageChannel?.let { "`$it`" } ?: "No stable plugin message channel"}")
             appendLine()
+            appendLine("#### Documentation")
             appendLine(packet.documentation)
         }
 
         fun StringBuilder.protocolPacketFields(packet: TmicnPacket) {
-            appendLine("| Name | Type | Description |")
-            appendLine("| ---- | ---- | ----------- |")
+            appendLine("#### Fields")
+            appendLine("| Name | Type | Documentation |")
+            appendLine("| ---- | ---- | ------------- |")
             for (field in packet.fields) {
                 appendLine("| `${field.name}` | `${field.type}` | ${field.documentation.trim()} |")
             }
@@ -62,10 +64,11 @@ object MarkdownOutputter : Outputter {
                 appendLine()
                 appendLine("This packet performs multiplexing. Meaning it is used to wrap multiple different packets under the same one.")
                 appendLine()
+                appendLine("#### Multiplexing specification")
                 appendLine("|  Id  | Name |")
                 appendLine("| ---- | ---- |")
                 val startId = packet.multiplexing.startId
-                for ((index, id) in (startId until startId + packet.fields.size - 1).withIndex()) {
+                for ((index, id) in (startId until startId + packet.multiplexing.packets.size).withIndex()) {
                     appendLine("| `$id` | `${packet.multiplexing.packets[index]}` |")
                 }
             }
