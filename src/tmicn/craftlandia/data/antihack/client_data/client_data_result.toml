@@ -24,7 +24,7 @@ It is unknown what this is used for, although it appears to be a constant.
 """
 
 [[fields]]
-name = "unknown data_2"
+name = "unknown_data_2"
 type = "double"
 
 documentation = """
@@ -32,7 +32,7 @@ It is unknown what this is used for, although it appears to be a constant.
 """
 
 [[fields]]
-name = "unknown data_3"
+name = "unknown_data_3"
 type = "double"
 
 documentation = """
@@ -40,7 +40,7 @@ It is unknown what this is used for, although it appears to be a constant.
 """
 
 [[fields]]
-name = "unknown data_4"
+name = "unknown_data_4"
 type = "double"
 
 documentation = """
@@ -48,7 +48,7 @@ It is unknown what this is used for, although it appears to be a constant.
 """
 
 [[fields]]
-name = "unknown data_5"
+name = "unknown_data_5"
 type = "double"
 
 documentation = """
