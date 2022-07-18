@@ -10,7 +10,7 @@ object WorkspaceSetupHelper {
         val workspace = TmicnDefinitionsWorkspace(project)
 
         extension.protocols.forEach {
-            val protocolRootDir = project.file("src/$it").toPath()
+            val protocolRootDir = project.file("src/tmicn/$it").toPath()
             workspace.addProtocol(it, protocolRootDir)
         }
 

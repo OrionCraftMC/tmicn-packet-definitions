@@ -14,7 +14,7 @@ object WorkspaceConstants {
 
     const val PROTOCOL_DEFINITION_FILE = "protocol.toml"
 
-    const val TMICN_DEFINITION_FILE = "src/tmicn.toml"
+    const val TMICN_DEFINITION_FILE = "src/tmicn/tmicn.toml"
 
     const val PROTOCOL_DATA_DIR = "data"
 
