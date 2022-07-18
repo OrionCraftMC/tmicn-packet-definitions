@@ -1,8 +1,8 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("tmicn-definitions-helper")
     kotlin("jvm") version "1.7.0"
+    id("tmicn-definitions-helper")
 }
 
 repositories {
@@ -10,7 +10,7 @@ repositories {
 }
 
 tmicn {
-    protocols = arrayOf("craftlandia")
+    protocols = arrayOf("demo", "craftlandia")
 }
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
