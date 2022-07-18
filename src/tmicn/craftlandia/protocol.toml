@@ -7,6 +7,7 @@ This is the protocol used by the CraftLandia AntiHack client to communicate with
 
 [[types]]
 name = "str_chars"
+java_name = "kotlin.String"
 documentation = """
 This is a string that is written in the format of a list of characters,
 being prefixed with the length of the string serialized as a short.
@@ -48,6 +49,7 @@ public static void writeStrChars(String str, DataOutputStream out) throws IOExce
 
 [[types]]
 name = "str_chars_array_int_size"
+java_name = "kotlin.String"
 documentation = """
 This is an array of strings of type str_chars but written to the wire in the following format:
 - The length of the array is written as an int `DataOutputStream#writeInt`
@@ -56,6 +58,7 @@ This is an array of strings of type str_chars but written to the wire in the fol
 
 [[types]]
 name = "byte_array_byte_size"
+java_name = "kotlin.ByteArray"
 documentation = """
 This is an array of bytes written to the wire in the following format:
 - The length of the array is written as a byte `OutputStream#write`
@@ -64,6 +67,7 @@ This is an array of bytes written to the wire in the following format:
 
 [[types]]
 name = "str_bytes"
+java_name = "kotlin.String"
 documentation = """
 This is a String that is read from a byte array.
 

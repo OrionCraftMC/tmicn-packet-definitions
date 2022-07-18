@@ -1,29 +1,34 @@
 [[types]]
 name = "boolean"
+java_name = "kotlin.Boolean"
 documentation = """
 This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
 """
 
 [[types]]
 name = "byte"
+java_name = "kotlin.Byte"
 documentation = """
 This is a byte value that is read with `InputStream#read` and written with `InputStream#write`.
 """
 
 [[types]]
 name = "double"
+java_name = "kotlin.Double"
 documentation = """
 This is a double value that is read with `DataInputStream#readDouble()` and written with `DataInputStream#writeDouble()`.
 """
 
 [[types]]
 name = "float"
+java_name = "kotlin.Float"
 documentation = """
 This is a float value that is read with `DataInputStream#readFloat()` and written with `DataInputStream#writeFloat()`.
 """
 
 [[types]]
 name = "utf"
+java_name = "kotlin.String"
 documentation = """
 This is a UTF string that is read with `DataInputStream#readUTF()` and written with `DataInputStream#writeUTF()`.
 """
