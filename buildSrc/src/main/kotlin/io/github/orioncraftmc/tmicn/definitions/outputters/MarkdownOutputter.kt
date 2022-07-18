@@ -105,22 +105,22 @@ object MarkdownOutputter : Outputter {
         val protocolDir = output.resolve(definition.name)
         Files.createDirectories(protocolDir)
 
-        val entrypointFile = protocolDir.resolve(WorkspaceConstants.PROTOCOL_MARKDOWN_FILE)
-        val typesFile = protocolDir.resolve(WorkspaceConstants.TYPES_MARKDOWN_FILE)
+        val entrypointFile = protocolDir.resolve(WorkspaceConstants.MarkdownConstants.PROTOCOL_MARKDOWN_FILE)
+        val typesFile = protocolDir.resolve(WorkspaceConstants.MarkdownConstants.TYPES_MARKDOWN_FILE)
 
         entrypointFile.writeText(buildString {
             protocolHeader(definition, protocol)
             splitter()
-            appendLine("Looking for types? Check them out [↪️ here](${WorkspaceConstants.TYPES_MARKDOWN_FILE}).")
+            appendLine("Looking for types? Check them out [↪️ here](${WorkspaceConstants.MarkdownConstants.TYPES_MARKDOWN_FILE}).")
             appendLine()
-            appendLine("Looking for the packets? Check them out [↪️ here](${WorkspaceConstants.PROTOCOL_PACKETS_FILE}).")
+            appendLine("Looking for the packets? Check them out [↪️ here](${WorkspaceConstants.MarkdownConstants.PROTOCOL_PACKETS_FILE}).")
         })
 
         typesFile.writeText(buildString {
             protocolPacketTypes(definition, protocol)
         })
 
-        val packetsEntrypointFile = protocolDir.resolve(WorkspaceConstants.PROTOCOL_PACKETS_FILE)
+        val packetsEntrypointFile = protocolDir.resolve(WorkspaceConstants.MarkdownConstants.PROTOCOL_PACKETS_FILE)
         val packetsEntrypointBuilder = StringBuilder().apply {
             appendLine("# TMICN Protocol Packets - ${protocol.name} (`${definition.name}`)")
             appendLine("## Packets")
@@ -129,7 +129,7 @@ object MarkdownOutputter : Outputter {
             appendLine()
         }
 
-        val packetsDir = protocolDir.resolve(WorkspaceConstants.PROTOCOL_PACKETS_DIR)
+        val packetsDir = protocolDir.resolve(WorkspaceConstants.MarkdownConstants.PROTOCOL_PACKETS_DIR)
         Files.createDirectories(packetsDir)
         for (packet in definition.packets.sortedBy { it.name }) {
             val packetFile = (packet.path.parent?.let { packetsDir.resolve(it) } ?: packetsDir).resolve("${packet.path.nameWithoutExtension}.md")

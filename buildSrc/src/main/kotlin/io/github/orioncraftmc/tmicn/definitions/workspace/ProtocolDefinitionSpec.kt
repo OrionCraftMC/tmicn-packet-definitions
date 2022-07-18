@@ -15,8 +15,8 @@ data class ProtocolDefinitionSpec(
     val name: String,
     val rootDir: Path
 ) {
-    private val definitionPath: Path = rootDir.resolve(WorkspaceConstants.PROTOCOL_DEFINITION_FILE)
-    private val dataDir: Path = rootDir.resolve(WorkspaceConstants.PROTOCOL_DATA_DIR)
+    private val definitionPath: Path = rootDir.resolve(WorkspaceConstants.IoConstants.PROTOCOL_DEFINITION_FILE)
+    private val dataDir: Path = rootDir.resolve(WorkspaceConstants.IoConstants.PROTOCOL_DATA_DIR)
 
     fun load(tmicnSpec: TmicnSpec): ProtocolDefinition {
         if (Files.notExists(definitionPath)) {

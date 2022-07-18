@@ -14,7 +14,7 @@ open class GenerateMarkdownDocumentation : TmicnTask() {
 
     @TaskAction
     fun generate() {
-        val docsOutDir = project.buildDir.toPath().resolve(WorkspaceConstants.DOCS_OUTPUT_DIR)
+        val docsOutDir = project.buildDir.toPath().resolve(WorkspaceConstants.MarkdownConstants.DOCS_OUTPUT_DIR)
         val tmicn = project.tmicn
 
         Files.createDirectories(docsOutDir)

@@ -8,12 +8,12 @@ import kotlin.io.path.readText
 data class TmicnDefinitionsWorkspace(
     val project: Project,
 ) {
-    private val tmicnSpecPath = project.projectDir.toPath().resolve(WorkspaceConstants.TMICN_DEFINITION_FILE)
+    private val tmicnSpecPath = project.projectDir.toPath().resolve(WorkspaceConstants.IoConstants.TMICN_DEFINITION_FILE)
 
     private val tmicnSpec = WorkspaceConstants.mapper.readValue(tmicnSpecPath.readText(), TmicnSpec::class.java)
 
     init {
-        tmicnSpec.types.add(WorkspaceConstants.MULTIPLEX_TYPE)
+        tmicnSpec.types.add(WorkspaceConstants.MultiplexConstants.MULTIPLEX_TYPE)
     }
 
     private val definitionSpecs = mutableListOf<ProtocolDefinitionSpec>()
