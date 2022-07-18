@@ -6,6 +6,7 @@ import com.fasterxml.jackson.module.kotlin.kotlinModule
 import io.github.orioncraftmc.tmicn.definitions.workspace.ProtocolDefinition
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.TmicnProtocolType
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.TmicnPacket
+import java.io.File
 import java.util.*
 
 object WorkspaceConstants {
@@ -41,11 +42,21 @@ object WorkspaceConstants {
 
         fun generatedProtocolPackage(name: String) = "io.github.orioncraftmc.tellmeicheatnow.protocols.$name"
 
-        fun generatedPacketPackage(definition: ProtocolDefinition, packet: TmicnPacket) = "${generatedProtocolPackage(definition.name)}.packets"
+        fun generatedPacketPackage(definition: ProtocolDefinition, packet: TmicnPacket): String {
+            var pathPackages: String? = null
+            if (packet.path.parent != null) {
+                val pathParent = packet.path.parent.toString()
+                pathPackages = pathParent.replace(File.separatorChar, '.').split('.')
+                    .joinToString(".") { it.split('_').joinToString("") }
+            }
+            return "${generatedProtocolPackage(definition.name)}.packets${pathPackages?.let { ".$it" } ?: ""}"
+        }
 
         fun cleanupPacketName(name: String) = name.toCamelCase()
 
-        fun cleanupPacketFieldName(name: String) = name.toCamelCase().replaceFirstChar { it.lowercase(Locale.getDefault()) }
+        fun cleanupPacketFieldName(name: String) = name.toLowerCamelCase()
+
+        private fun String.toLowerCamelCase() = toCamelCase().replaceFirstChar { it.lowercase(Locale.getDefault()) }
 
         private fun String.toCamelCase() =
             split('_').joinToString("") { str -> str.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
@@ -60,7 +71,7 @@ object WorkspaceConstants {
         |This is a multiplex content type.
         |
         |The field marked with this type is replaced with the actual byte content from the multiplexed packet""".trimMargin()
-                .trim()
+                .trim(), "kotlin.ByteArray"
         )
     }
 
