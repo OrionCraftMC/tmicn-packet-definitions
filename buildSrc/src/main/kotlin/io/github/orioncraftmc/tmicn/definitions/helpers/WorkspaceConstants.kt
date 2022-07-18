@@ -3,6 +3,7 @@ package io.github.orioncraftmc.tmicn.definitions.helpers
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.dataformat.toml.TomlMapper
 import com.fasterxml.jackson.module.kotlin.kotlinModule
+import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.TmicnProtocolType
 
 object WorkspaceConstants {
 
@@ -24,6 +25,12 @@ object WorkspaceConstants {
     const val PROTOCOL_MARKDOWN_FILE = "protocol.md"
     const val TYPES_MARKDOWN_FILE = "types.md"
     const val PROTOCOL_PACKETS_FILE = "packets.md"
+
+    private const val MULTIPLEX_CONTENT_TYPE = "multiplex_content"
+    val MULTIPLEX_TYPE = TmicnProtocolType(MULTIPLEX_CONTENT_TYPE, """
+        |This is a multiplex content type.
+        |
+        |The field marked with this type is replaced with the actual byte content from the multiplexed packet""".trimMargin().trim())
 
 
 }

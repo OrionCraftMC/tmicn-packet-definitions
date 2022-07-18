@@ -36,3 +36,8 @@ documentation = "A randomly generated UUID to represent this packet."
 name = "multiplex_id"
 type = "byte"
 documentation = "The ID of the packet to be multiplexed."
+
+[[fields]]
+name = "packet_content"
+type = "multiplex_content"
+documentation = "The content of the packet that was multiplexed."

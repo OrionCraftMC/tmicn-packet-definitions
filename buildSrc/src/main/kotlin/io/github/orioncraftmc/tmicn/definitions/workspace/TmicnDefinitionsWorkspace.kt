@@ -12,6 +12,10 @@ data class TmicnDefinitionsWorkspace(
 
     private val tmicnSpec = WorkspaceConstants.mapper.readValue(tmicnSpecPath.readText(), TmicnSpec::class.java)
 
+    init {
+        tmicnSpec.types.add(WorkspaceConstants.MULTIPLEX_TYPE)
+    }
+
     private val definitionSpecs = mutableListOf<ProtocolDefinitionSpec>()
     internal val protocolDefinitions = mutableListOf<ProtocolDefinition>()
 
