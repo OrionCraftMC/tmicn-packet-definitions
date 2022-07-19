@@ -27,14 +27,6 @@ data class TmicnPacketFieldGenerationModel(
             ?: NOTHING
     }
 
-    val asFieldTypeIoRead: CodeBlock by lazy {
-        if (fieldTypeIo == NOTHING) {
-            CodeBlock.of("TODO()")
-        } else {
-            CodeBlock.of("%T.read(dis)", fieldTypeIo)
-        }
-    }
-
     val asParameter: ParameterSpec by lazy {
         ParameterSpec.builder(fieldName, fieldType).addKdoc(field.documentation).build()
     }

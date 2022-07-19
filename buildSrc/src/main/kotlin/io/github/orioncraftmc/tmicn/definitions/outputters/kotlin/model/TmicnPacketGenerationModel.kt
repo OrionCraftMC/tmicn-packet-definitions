@@ -15,7 +15,7 @@ data class TmicnPacketGenerationModel(
 ) {
 
     val multiplexingModel by lazy {
-        TmicnPacketMultiplexingModel(definitionModel, packet.multiplexing)
+        TmicnPacketMultiplexingModel(definitionModel, this)
     }
 
     val asPacketIoModel: TmicnPacketIoGenerationModel by lazy {
@@ -41,8 +41,15 @@ data class TmicnPacketGenerationModel(
     }
 
 
-
-    val asIoRead: CodeBlock by lazy {
-        CodeBlock.of("%T.read(dis)", this.asClassName)
+    fun getAsIoRead(name: ParameterSpec): CodeBlock = CodeBlock.of("%T.read(%N)", this.asClassName, name)
+    fun getAsIoWrite(outStream: ParameterSpec, packetVariable: CodeBlock, expectedPacketType: TypeName): CodeBlock {
+        val packetTypeToWrite = this.asClassName
+        return CodeBlock.of(
+            "%T.write(%N, %L as %T)",
+            packetTypeToWrite,
+            outStream,
+            packetVariable,
+            expectedPacketType
+        )
     }
 }
