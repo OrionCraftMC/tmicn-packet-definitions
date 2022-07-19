@@ -8,8 +8,7 @@ This packet multiplexes the communication between the server and the client by w
 """
 
 [multiplexing]
-# It technically starts at 99 but it increments to 100 on the first packet.
-start_id = 100
+start_id = 99
 packets = [
     # Backdoor
     "backdoor_request",
@@ -28,14 +27,14 @@ packets = [
 ]
 
 [[fields]]
-name = "packet_uuid"
-type = "str_chars"
-documentation = "A randomly generated UUID to represent this packet."
-
-[[fields]]
 name = "multiplex_id"
 type = "byte"
 documentation = "The ID of the packet to be multiplexed."
+
+[[fields]]
+name = "packet_uuid"
+type = "str_chars"
+documentation = "A randomly generated UUID to represent this packet."
 
 [[fields]]
 name = "packet_content"
