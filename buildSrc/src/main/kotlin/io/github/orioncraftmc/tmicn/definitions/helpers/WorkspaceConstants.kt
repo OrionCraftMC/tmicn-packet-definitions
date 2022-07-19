@@ -81,14 +81,16 @@ object WorkspaceConstants {
     }
 
     object MultiplexConstants {
-        private const val MULTIPLEX_CONTENT_TYPE = "multiplex_content"
+        const val MULTIPLEX_ID_FIELD_NAME = "multiplex_id"
+
+        const val MULTIPLEX_CONTENT_TYPE = "multiplex_content"
 
         val MULTIPLEX_TYPE = TmicnProtocolType(
             MULTIPLEX_CONTENT_TYPE, """
         |This is a multiplex content type.
         |
         |The field marked with this type is replaced with the actual byte content from the multiplexed packet""".trimMargin()
-                .trim(), "kotlin.ByteArray"
+                .trim(), "io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacket"
         )
     }
 
