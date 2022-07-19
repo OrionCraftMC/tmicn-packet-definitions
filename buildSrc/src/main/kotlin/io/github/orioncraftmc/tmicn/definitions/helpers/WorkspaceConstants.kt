@@ -3,6 +3,7 @@ package io.github.orioncraftmc.tmicn.definitions.helpers
 import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.dataformat.toml.TomlMapper
 import com.fasterxml.jackson.module.kotlin.kotlinModule
+import com.squareup.kotlinpoet.ClassName
 import io.github.orioncraftmc.tmicn.definitions.workspace.ProtocolDefinition
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.TmicnProtocolType
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.TmicnPacket
@@ -35,6 +36,9 @@ object WorkspaceConstants {
     }
 
     object KotlinConstants {
+
+        val tmicnPacketInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacket")
+        val tmicnPacketIoInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacketIo")
 
         const val GENERATED_DIR = "generated/kotlin"
 

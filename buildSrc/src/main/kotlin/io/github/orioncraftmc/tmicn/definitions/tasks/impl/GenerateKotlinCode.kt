@@ -20,7 +20,6 @@ open class GenerateKotlinCode : TmicnTask() {
 
         val workspace = tmicn.workspace ?: throw IllegalStateException("Workspace is not ready yet")
         for (protocolDefinition in workspace.protocolDefinitions) {
-            println(protocolDefinition.name)
             KotlinOutputter.output(protocolDefinition, outDir)
         }
 
