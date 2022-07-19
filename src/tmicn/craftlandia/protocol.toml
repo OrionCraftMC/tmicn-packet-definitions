@@ -71,7 +71,7 @@ This is an array of bytes written to the wire in the following format:
 [[types]]
 name = "str_bytes"
 java_name = "kotlin.String"
-io_name = "io.github.orioncraftmc.tellmeicheatnow.craftlandia.types.StrBytesTypeIo"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.craftlandia.types.StrBytesTypeIo"
 documentation = """
 This is a String that is read from a byte array.
 
