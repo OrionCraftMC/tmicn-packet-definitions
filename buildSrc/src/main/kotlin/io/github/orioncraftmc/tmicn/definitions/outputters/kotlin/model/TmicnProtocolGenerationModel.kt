@@ -41,6 +41,11 @@ data class TmicnPacketFieldGenerationModel(
             ?: NOTHING
     }
 
+    val fieldTypeIo: TypeName by lazy {
+        definition.protocol.types.firstOrNull { it.name == this.field.type }?.ioClass?.let { ClassName.bestGuess(it) }
+            ?: NOTHING
+    }
+
     val asParameter: ParameterSpec by lazy {
         ParameterSpec.builder(fieldName, fieldType).addKdoc(field.documentation).build()
     }

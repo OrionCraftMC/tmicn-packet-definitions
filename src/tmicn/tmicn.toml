@@ -1,13 +1,15 @@
 [[types]]
 name = "boolean"
 java_name = "kotlin.Boolean"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.core.types.impl.StandardBooleanTypeIo"
 documentation = """
 This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
 """
 
 [[types]]
 name = "byte"
-java_name = "kotlin.Byte"
+java_name = "kotlin.Int"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.core.types.impl.StandardByteTypeIo"
 documentation = """
 This is a byte value that is read with `InputStream#read` and written with `InputStream#write`.
 """
@@ -15,6 +17,7 @@ This is a byte value that is read with `InputStream#read` and written with `Inpu
 [[types]]
 name = "double"
 java_name = "kotlin.Double"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.core.types.impl.StandardDoubleTypeIo"
 documentation = """
 This is a double value that is read with `DataInputStream#readDouble()` and written with `DataInputStream#writeDouble()`.
 """
@@ -22,6 +25,7 @@ This is a double value that is read with `DataInputStream#readDouble()` and writ
 [[types]]
 name = "float"
 java_name = "kotlin.Float"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.core.types.impl.StandardFloatTypeIo"
 documentation = """
 This is a float value that is read with `DataInputStream#readFloat()` and written with `DataInputStream#writeFloat()`.
 """
@@ -29,6 +33,7 @@ This is a float value that is read with `DataInputStream#readFloat()` and writte
 [[types]]
 name = "utf"
 java_name = "kotlin.String"
+io_class = "io.github.orioncraftmc.tellmeicheatnow.core.types.impl.StandardUtfTypeIo"
 documentation = """
 This is a UTF string that is read with `DataInputStream#readUTF()` and written with `DataInputStream#writeUTF()`.
 """
