@@ -26,7 +26,8 @@ class TmicnDefinitionsHelperPlugin : Plugin<Project> {
             }
             extension.workspace = workspace
             target.tasks.register("generateMarkdownDocumentation", GenerateMarkdownDocumentation::class.java)
-            target.tasks.register("generateKotlinCode", GenerateKotlinCode::class.java)
+            val generateKotlinCode = target.tasks.register("generateKotlinCode", GenerateKotlinCode::class.java).get()
+            target.tasks.getByName("compileKotlin").dependsOn(generateKotlinCode)
         }
     }
 }
