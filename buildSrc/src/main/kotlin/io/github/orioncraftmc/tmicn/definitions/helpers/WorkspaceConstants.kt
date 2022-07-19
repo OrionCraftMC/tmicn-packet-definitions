@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.DeserializationFeature
 import com.fasterxml.jackson.dataformat.toml.TomlMapper
 import com.fasterxml.jackson.module.kotlin.kotlinModule
 import com.squareup.kotlinpoet.ClassName
+import com.squareup.kotlinpoet.ParameterizedTypeName.Companion.parameterizedBy
+import com.squareup.kotlinpoet.TypeName
 import io.github.orioncraftmc.tmicn.definitions.workspace.ProtocolDefinition
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.TmicnProtocolType
 import io.github.orioncraftmc.tmicn.definitions.workspace.definitions.packets.TmicnPacket
@@ -64,6 +66,17 @@ object WorkspaceConstants {
 
         private fun String.toCamelCase() =
             split('_').joinToString("") { str -> str.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() } }
+
+        fun parseJavaName(javaName: String): TypeName {
+            val genericsStart = javaName.indexOf('<')
+            val genericsEnd = javaName.indexOf('>')
+            if (genericsStart != -1 && genericsEnd != -1) {
+                val generics = javaName.substring(genericsStart + 1, genericsEnd)
+                val className = javaName.substring(0, genericsStart)
+                return (parseJavaName(className) as ClassName).parameterizedBy(generics.split(',').map { parseJavaName(it.trim()) })
+            }
+            return ClassName.bestGuess(javaName)
+        }
 
     }
 

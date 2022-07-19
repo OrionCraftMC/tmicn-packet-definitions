@@ -18,9 +18,11 @@ class TmicnDefinitionsHelperPlugin : Plugin<Project> {
             val workspace = WorkspaceSetupHelper.setupWorkspace(project, extension)
 
             workspace.protocolDefinitions.forEach { def ->
-                target.extensions.getByType(JavaPluginExtension::class.java).sourceSets.create(def.name) { set ->
+                val sourceSets = target.extensions.getByType(JavaPluginExtension::class.java).sourceSets
+                sourceSets.maybeCreate(def.name).also { set ->
                     set.java.srcDir(target.buildDir.toPath().resolve(GENERATED_DIR).resolve(def.name))
                 }
+                project.dependencies.add(def.name + "Api", project.files(sourceSets.getByName("main").output))
             }
             extension.workspace = workspace
             target.tasks.register("generateMarkdownDocumentation", GenerateMarkdownDocumentation::class.java)
