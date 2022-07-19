@@ -4,7 +4,7 @@ documentation = """
 This is a boolean value that is read with `DataInputStream#readBoolean()` and written with `DataInputStream#writeBoolean()`.
 """
 
-[[type]]
+[[types]]
 name = "byte"
 documentation = """
 This is a byte value that is read with `InputStream#read` and written with `InputStream#write`.
