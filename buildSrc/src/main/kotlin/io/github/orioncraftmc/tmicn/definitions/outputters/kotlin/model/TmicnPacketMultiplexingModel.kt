@@ -10,7 +10,7 @@ data class TmicnPacketMultiplexingModel(
     val multiplexingData: TmicnPacketMultiplexingData? = packet.packet.multiplexing,
     val isMultiplexingPackets: Boolean = multiplexingData != null,
     val multiplexIdField: TmicnPacketFieldGenerationModel? =
-        packet.fields.firstOrNull { it.field.name == WorkspaceConstants.MultiplexConstants.MULTIPLEX_ID_FIELD_NAME },
+        packet.fields.firstOrNull { it.isMultiplexingIdField },
     val multiplexContentField: TmicnPacketFieldGenerationModel? =
         packet.fields.firstOrNull { it.field.type == WorkspaceConstants.MultiplexConstants.MULTIPLEX_CONTENT_TYPE },
 

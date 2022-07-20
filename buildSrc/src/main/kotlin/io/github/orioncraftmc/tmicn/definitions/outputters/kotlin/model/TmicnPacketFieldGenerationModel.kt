@@ -14,6 +14,9 @@ data class TmicnPacketFieldGenerationModel(
         field.name
     )
 ) {
+    val isMultiplexingIdField
+        get() = field.name == WorkspaceConstants.MultiplexConstants.MULTIPLEX_ID_FIELD_NAME
+
     val fieldType: TypeName by lazy {
         definition.protocol.types.firstOrNull { it.name == this.field.type }?.javaName?.let {
             WorkspaceConstants.KotlinConstants.parseJavaName(

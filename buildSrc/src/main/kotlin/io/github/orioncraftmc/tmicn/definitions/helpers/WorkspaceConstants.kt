@@ -42,8 +42,10 @@ object WorkspaceConstants {
         val tmicnPacketInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacket")
         val tmicnPacketIoInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacketIo")
 
-        val tmicnPacketDirectionMetadata = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.annotations.PacketDirectionMetatada")
+        val tmicnPacketDirectionMetadata = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.annotations.PacketDirectionMetadata")
         val tmicnPacketDirectionEnum = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.PacketDirection")
+
+        val tmicnPacketMultiplexedByMetadata = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.annotations.PacketMultiplexedByMetadata")
 
         const val GENERATED_DIR = "generated/kotlin"
 
