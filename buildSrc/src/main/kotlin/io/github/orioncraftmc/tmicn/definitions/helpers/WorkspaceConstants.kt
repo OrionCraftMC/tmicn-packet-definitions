@@ -42,6 +42,9 @@ object WorkspaceConstants {
         val tmicnPacketInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacket")
         val tmicnPacketIoInterface = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.TmicnPacketIo")
 
+        val tmicnPacketDirectionMetadata = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.annotations.PacketDirectionMetatada")
+        val tmicnPacketDirectionEnum = ClassName.bestGuess("io.github.orioncraftmc.tellmeicheatnow.core.packets.metadata.PacketDirection")
+
         const val GENERATED_DIR = "generated/kotlin"
 
         fun cleanupProtocolName(name: String) = name.replace(" ", "")

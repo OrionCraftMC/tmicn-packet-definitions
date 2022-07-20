@@ -32,11 +32,21 @@ data class TmicnPacketGenerationModel(
             .build()
     }
 
+    val asPacketDirectionAnnotation: AnnotationSpec by lazy {
+        AnnotationSpec.builder(KotlinConstants.tmicnPacketDirectionMetadata)
+            .also {
+                val dirs = packet.directions.map { CodeBlock.of("%T.%L", KotlinConstants.tmicnPacketDirectionEnum, it.name) }
+                it.addMember("[${"%L, ".repeat(dirs.size)}]", *dirs.toTypedArray())
+            }
+            .build()
+    }
+
     val asType: TypeSpec by lazy {
         TypeSpec.classBuilder(packetName).also { if (packet.fields.isNotEmpty()) it.addModifiers(KModifier.DATA) }
             .addSuperinterface(KotlinConstants.tmicnPacketInterface).primaryConstructor(asCtor)
             .addProperties(fields.map { it.asProperty }).addKdoc(packet.documentation)
             .addType(asPacketIoModel.asType)
+            .addAnnotation(asPacketDirectionAnnotation)
             .build()
     }
 

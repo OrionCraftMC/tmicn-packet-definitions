@@ -21,7 +21,7 @@ data class TmicnPacket(
     val fields: MutableList<TmicnPacketField> = mutableListOf()
 
     @JsonIgnore
-    var directions: EnumSet<PacketDirectionType> = EnumSet.of(PacketDirectionType.Unknown)
+    var directions: EnumSet<PacketDirectionType> = EnumSet.of(PacketDirectionType.UNKNOWN)
 
     @get:JsonProperty("type")
     @set:JsonProperty("type")
