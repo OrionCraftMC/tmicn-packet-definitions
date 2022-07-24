@@ -21,11 +21,11 @@ data class TmicnDefinitionsWorkspace(
 
     fun addProtocol(name: String, protocolRootDir: Path) {
         definitionSpecs.add(ProtocolDefinitionSpec(project, name, protocolRootDir))
-        project.logger.quiet(":tmicn - Registered TMICN protocol \"$name\"")
     }
 
     fun loadProtocols() {
         definitionSpecs.forEach {
+            project.logger.quiet(":tmicn - Registered TMICN protocol \"${it.name}\"")
             protocolDefinitions.add(it.load(tmicnSpec))
         }
     }
