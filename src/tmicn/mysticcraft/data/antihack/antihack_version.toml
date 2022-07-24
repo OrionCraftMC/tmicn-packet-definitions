@@ -1,0 +1,13 @@
+name = "antihack_version"
+type = ["server-to-client"]
+
+documentation = """
+This packet is used to notify the client of the server's antihack version.
+"""
+
+[[fields]]
+name = "remote_version"
+type = "str_chars"
+
+documentation = "The antihack version of the server"
+

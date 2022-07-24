@@ -1,0 +1,24 @@
+name = "antihack_payload_reply"
+type = ['client-to-server']
+
+documentation = """
+This is the packet that wraps all the communication that is done by the client.
+"""
+
+[multiplexing]
+start_id = 3
+packets = [
+    # Game Fingerprint
+    "game_fingerprint_response",
+]
+
+
+[[fields]]
+name = "multiplex_id"
+type = "byte"
+documentation = "The ID of the packet to be multiplexed."
+
+[[fields]]
+name = "packet_content"
+type = "multiplex_content"
+documentation = "The content of the packet that was multiplexed."

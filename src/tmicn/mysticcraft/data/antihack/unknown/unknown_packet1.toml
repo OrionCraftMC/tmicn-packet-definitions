@@ -1,0 +1,13 @@
+name = "unknown_packet1"
+type = ["server-to-client"]
+
+documentation = """
+The functionality of this packet is unknown.
+"""
+
+[[fields]]
+name = "unknown_string"
+type = "str_chars"
+
+documentation = "The usage of this field is unknown."
+

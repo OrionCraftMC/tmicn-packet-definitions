@@ -16,6 +16,15 @@ packets = [
 
     # Game Fingerprint
     "game_fingerprint_request",
+
+    # Player Effects
+    "blaze_effect",
+    "mickey_effect",
+
+    # Unknown
+    "unknown_packet1",
+
+    "antihack_version"
 ]
 
 
