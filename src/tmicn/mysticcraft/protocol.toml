@@ -1,0 +1,43 @@
+name = "MysticCraft AntiHack"
+
+documentation = """
+This is the protocol used by the MysticCraft AntiHack client to communicate with the server's anticheat system.
+"""
+
+
+[[types]]
+name = "str_bytes"
+java_name = "kotlin.String"
+#TODO: io_class = ""
+documentation = """
+This is a String that is read from a byte array.
+
+
+<details>
+<summary>I/O Pseudocode</summary>
+
+Reading in Java:
+```java
+public static String readStrBytes(InputStream input) {
+    // Read the number of bytes that make up the string
+    int length = input.read();
+    byte[] bytes = new byte[length];
+    // Read the bytes from the stream into the array
+    input.read(bytes);
+    // Finally, convert the bytes to a string
+    String result = new String(bytes, "UTF-8");
+
+    return result;
+}
+```
+
+Writing in Java:
+```java
+public static void writeStrBytes(String str, OutputStream output) throws IOException {
+    output.write(str.length());
+    output.write(str.getBytes());
+}
+```
+
+</details>
+"""

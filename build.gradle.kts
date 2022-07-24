@@ -10,7 +10,7 @@ repositories {
 }
 
 tmicn {
-    protocols = arrayOf("craftlandia")
+    protocols = arrayOf("craftlandia", "mysticcraft")
 }
 dependencies {
     implementation(kotlin("stdlib-jdk8"))

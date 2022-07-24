@@ -1,0 +1,17 @@
+name = "screenshot_request"
+type = ['server-to-client']
+
+documentation = """
+This packet is used by the server to request a game screenshot from the client.
+
+Along with the screenshot, the client also uploads the user's current process list, the current player's username.
+"""
+
+[[fields]]
+name = "upload_data"
+type = "str_bytes"
+documentation = """
+This field is a string in the following format `<upload key>/<staffer>` where:
+   - `<upload key>` is a randomly generated upload key from the server
+   - `<staffer>` is the username of the staff member that requested the screenshot from the player
+"""
